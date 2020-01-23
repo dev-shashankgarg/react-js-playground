@@ -1,22 +1,28 @@
 console.log('visibilty toggle app.js initialized!')
 
-const appRoot = document.querySelector('#root')
-let toggle = 1
+class VisibilityToggle extends React.Component {
 
-const clickEvent = (event) => {
-    toggle = (toggle + 1) % 2
-    render()
-}
+    constructor(props) {
+        super(props)
+        this.clickEvent = this.clickEvent.bind(this)
+        this.state = {
+            toggle: 1
+        }
+    }
 
-const render = () => {
-    const template = (
-        <div>
+    clickEvent() {
+        this.setState((prevState) => {
+            return { toggle: (prevState.toggle + 1) % 2 }
+        })
+    }
+
+    render() {
+        return (<div>
             <h1>Visibility Toggle</h1>
-            <button onClick={clickEvent} >{toggle ? 'Show details' : 'Hide details'}</button>
-            {!toggle ? <p>Hey, These are some details you can now see!</p> : undefined}
-        </div>);
-
-    ReactDOM.render(template, appRoot);
+            <button onClick={this.clickEvent} >{this.state.toggle ? 'Show details' : 'Hide details'}</button>
+            {!this.state.toggle ? <p>Hey, These are some details you can now see!</p> : undefined}
+        </div>)
+    }
 }
 
-render()
+ReactDOM.render(<VisibilityToggle />, document.querySelector('#root'))
