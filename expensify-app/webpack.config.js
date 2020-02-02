@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        main: './src/index.js'
+        main: './src/sandbox/redux-expensify.js'
     },
     output: {
         path: path.resolve(__dirname, 'public/scripts/'),
@@ -23,7 +23,7 @@ module.exports = {
                     loader: 'babel-loader',
                     options: {
                         presets: ['@babel/env', '@babel/react'],
-                        plugins: ['@babel/plugin-proposal-class-properties']
+                        plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-object-rest-spread']
                     }
                 }
             },
