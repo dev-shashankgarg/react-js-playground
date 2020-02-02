@@ -5,13 +5,14 @@ module.exports = {
         main: './src/index.js'
     },
     output: {
-        path: path.resolve(__dirname, 'public/scripts'),
+        path: path.resolve(__dirname, 'public/scripts/'),
         filename: '[name]-bundle.js'
     },
     devtool: 'source-map',
     devServer: {
         contentBase: path.resolve(__dirname, 'public'),
-        publicPath: '/scripts/'
+        publicPath: '/scripts/',
+        historyApiFallback: true
     },
     module: {
         rules: [
@@ -25,6 +26,20 @@ module.exports = {
                         plugins: ['@babel/plugin-proposal-class-properties']
                     }
                 }
+            },
+            {
+                test: /\.s?css$/,
+                use: [
+                    {
+                        loader: 'style-loader'
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    }
+                ]
             }
         ]
     }
