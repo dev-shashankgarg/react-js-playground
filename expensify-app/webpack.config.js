@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     entry: {
-        main: './src/sandbox/redux-expensify.js'
+        main: './src/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'public/scripts/'),
