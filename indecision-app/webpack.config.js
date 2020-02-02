@@ -12,7 +12,7 @@ module.exports = {
     module: {
         rules: [{
             test: /\.js$/,
-            exclude : /node_modules/,
+            exclude: /node_modules/,
             use: {
                 loader: 'babel-loader',
                 options: {
@@ -20,6 +20,16 @@ module.exports = {
                     plugins: ["@babel/plugin-proposal-class-properties"]
                 }
             }
+        }, {
+            test: /\.scss$/,
+            use: [
+                {
+                    loader: 'style-loader'
+                }, {
+                    loader: 'css-loader'
+                }, {
+                    loader: 'sass-loader'
+                }]
         }]
     },
     devServer: {
